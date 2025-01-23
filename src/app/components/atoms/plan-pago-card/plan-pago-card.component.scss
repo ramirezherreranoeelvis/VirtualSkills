@@ -1,0 +1,61 @@
+.plan {
+        @apply bg-cyan-950 grid p-3 h-full relative px-10 py-7 rounded-md;
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+        background: radial-gradient(50% 50% at 50% 50%, transparent 0%, #0104075e 100%);
+
+        &.center {
+                background: radial-gradient(50% 50% at 50% 50%, transparent 0%, #13027057 100%);
+                box-shadow: 0 0 20px 0 #17086e33;
+        }
+
+        .name{
+                @apply text-white text-2xl font-bold mb-3;
+                margin-bottom: 10px;
+                font-family: 'arcade', Courier, monospace;
+
+        }
+
+        .precio-periodo {
+                @apply text-lg font-bold mb-3;
+                .price{
+                        @apply  text-[#c9d1eb];
+                }
+                .periodo{
+                        @apply font-bold text-xs text-[#c9d1eb];
+                }
+        }
+
+        .description {
+                @apply text-white text-sm font-bold mb-1;
+        }
+
+        ul {
+                @apply text-[#c9d1eb] text-sm mt-8 space-y-3;
+
+        }
+
+        li {
+                @apply flex;
+
+                svg {
+                        @apply mr-3;
+                }
+        }
+
+        .options {
+                @apply flex items-end justify-center;
+
+                button {
+                        // @apply bg-cyan-900 text-white text-sm font-bold rounded-md mt-5 bottom-0 px-5 py-2 transition-all;
+                        // box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+                        @apply bg-[#1900ff69] text-white text-sm font-bold rounded-md mt-5 bottom-0 px-5 py-2 transition-all;
+                        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+
+                        &:hover {
+                                @apply bg-[#1900ffa9];
+                        }
+                }
+
+        }
+
+}

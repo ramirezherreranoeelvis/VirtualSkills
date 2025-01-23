@@ -1,1 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer utilities{
+        .full-view{
+               @apply h-[100vh] w-[100vw];
+        }
+
+        .base-container {
+                @apply flex justify-center items-center;
+        }
+
+        .base-image {
+                @apply bg-cover bg-no-repeat bg-center;
+        }
+
+        .outline-base{
+                @apply outline-none outline-offset-0;
+        }
+}
+
+
+@font-face {
+        font-family: 'Arcade Gamer';
+        src: url('./assets/Fonts/ARCADE_N.TTF') format('truetype');
+}
+
+@font-face {
+        font-family: 'Bree Serif';
+        src: url('/assets/Fonts/BreeSerif_T.ttf') format('truetype');
+}
+
+@font-face {
+        font-family: 'Fredoka';
+        src: url('/assets/Fonts/Fredoka.ttf') format('truetype');
+}
+
+@font-face {
+        font-family: 'Bubblegum Sans';
+        src: url('/assets/Fonts/BubblegumSans-Regular.ttf') format('truetype');
+}
+@font-face {
+        font-family: 'lexend';
+        src: url('https://fonts.googleapis.com/css2?family=Lexend&display=swap') format('truetype');
+}

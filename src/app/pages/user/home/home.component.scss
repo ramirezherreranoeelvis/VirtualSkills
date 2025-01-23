@@ -1,0 +1,17 @@
+.base {
+        @apply min-h-[100vh];
+
+        &::before {
+                content: '';
+                @apply fixed top-0 left-0 h-full w-full;
+                z-index: -1;
+        }
+
+        &::after {
+                content: '';
+                @apply fixed top-0 left-0 h-full w-full base-image;
+                z-index: -5;
+                pointer-events: none;
+                background-image: url("/background.webp");
+        }
+}

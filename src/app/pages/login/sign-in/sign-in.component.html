@@ -1,0 +1,60 @@
+<main class="login bg-[#030c1bc2]">
+        <div class="panel bg-[#12283b7e] text-white">
+                <div class="logo ">
+                        <img src="/assets/Icons/Logo-White.svg" alt="logo">
+                        <h1 class="text-3xl font-bold text-white font-ibm">SkillConnect</h1>
+                </div>
+                <form [formGroup]="profile" (submit)="SignIn()">
+                        @let email = profile.get('email');
+                        @let touchEmail = email?.touched;
+                        @let requiredEmail = email?.hasError('required');
+                        @let incorrectEmail = email?.hasError('email');
+                        @let messageErrorEmail = requiredEmail? "El email es obligatorio": incorrectEmail?"El email no es válido":"Esta email es correcto";
+
+                        <div class="form-input" [ngClass]="{
+                                 'before:content-[attr(message)]': messageErrorEmail
+                        }" [attr.message]="messageErrorEmail">
+                                <input type="email" formControlName="email" placeholder="email" [ngClass]="{
+                                        'incorrect' : (email?.invalid && touchEmail) && (requiredEmail || incorrectEmail),
+                                        'correct': (email?.valid && touchEmail) && (!requiredEmail && !incorrectEmail),
+                                }">
+                        </div>
+
+                        @let password = profile.get('password');
+                        @let touchPassword = password?.touched;
+                        @let requiredPassword = password?.hasError('required');
+                        @let incorrectPassword = password?.hasError('minlength');
+                        @let messageErrorPassword = requiredPassword ? "La contraseña es obligatoria": incorrectPassword?"La contraseña debe tener al menos 6 caracteres": "La contraseña es correcta";
+                        <div class="form-input" [ngClass]="{
+                                'before:content-[attr(message)]': messageErrorPassword
+                        }" [attr.message]="messageErrorPassword">
+                                <input type="password" formControlName="password" placeholder="password" [ngClass]="{
+                                        'incorrect' : (password?.invalid && touchPassword) && (requiredPassword || incorrectPassword),
+                                        'correct': (password?.valid && touchPassword) && (!requiredPassword && !incorrectPassword)
+                                 }">
+                        </div>
+
+
+                        <div class="options">
+                                <input type="submit" [disabled]="profile.invalid" value="Iniciar sesión">
+                                <button>Crear cuenta</button>
+                        </div>
+                </form>
+                <div class="line-other-options">
+                        <div></div>
+                        <span>o continua con</span>
+                        <div></div>
+                </div>
+                <div class="options">
+                        <button>
+                                <img src="https://www.svgrepo.com/show/355037/google.svg" alt="Google" />
+                                <span>Google</span>
+                        </button>
+                        <button>
+                                <img src="https://img.icons8.com/?size=100&id=62856&format=png&color=000000"
+                                        alt="GitHub" />
+                                <span>GitHub</span>
+                        </button>
+                </div>
+        </div>
+</main>

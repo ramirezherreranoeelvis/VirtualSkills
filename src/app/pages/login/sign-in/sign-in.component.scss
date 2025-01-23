@@ -1,0 +1,129 @@
+* {
+        appearance: none;
+}
+
+input,
+button {
+        @apply outline-none outline-offset-0 border-none outline-1 outline-[#1e5097];
+        @apply bg-[#283b55] px-3 py-2.5 rounded-md w-full;
+}
+
+input[type="password"],
+input[type="email"] {
+        &.incorrect {
+                @apply outline-[#971e42] bg-[#55282856];
+        }
+
+        &.correct {
+                @apply outline-[#28971e] bg-[#2d552856];
+        }
+
+        &:focus {
+                @apply outline-[#408af1];
+
+                &.incorrect {
+                        @apply outline-[#e21b57];
+                }
+
+                &.correct {
+                        @apply outline-[#1be24d];
+                }
+        }
+}
+
+.form-input {
+        @apply relative z-0;
+
+        &::before {
+                content: attr(message);
+                @apply absolute bottom-0 right-3 -z-10 block text-sm;
+        }
+        
+}
+
+input[type="submit"],
+button {
+        @apply cursor-pointer;
+
+        &:hover {
+                @apply outline-[#408af1];
+        }
+}
+
+.login {
+        @apply relative base-container full-view;
+
+        &::after {
+                content: '';
+                @apply absolute top-0 left-0 h-full w-full base-image;
+                z-index: -1;
+                pointer-events: none;
+                background-image: url("/background.webp");
+        }
+}
+
+.panel {
+        @apply grid w-[900px] h-[50vh] px-5 py-2 rounded-xl shadow-panel;
+        grid-template-areas: "logo form" "logo line" "logo other";
+        grid-template-columns: 1.5fr 2fr;
+        grid-template-rows: 2.5fr .5fr 1fr;
+
+        @media (width <=920px) {
+                @apply h-[70vh] w-[60vw];
+                grid-template-areas: "logo" "form" "line" "other";
+                grid-template-columns: 100%;
+                grid-template-rows: 2fr 6fr 1fr 2fr;
+        }
+
+        .logo {
+                grid-area: logo;
+                @apply flex justify-center items-center flex-col gap-3;
+
+                img {
+                        @apply h-40 w-40;
+                }
+        }
+
+        form {
+                grid-area: form;
+                @apply flex flex-col gap-10 justify-center;
+
+                .options {
+
+                        input[type="submit"],
+                        button {
+                                @apply w-32;
+                        }
+                }
+        }
+
+        .line-other-options {
+                grid-area: line;
+                @apply flex items-center justify-center;
+
+                span {
+                        @apply w-[350px] px-4 text-gray-400 text-sm text-center;
+                }
+
+                div {
+                        @apply border-t border-[#85a4c27e] w-full;
+                }
+        }
+
+        .options {
+                grid-area: other;
+                @apply flex gap-7 justify-center items-center;
+
+                button {
+                        @apply w-40 flex justify-center gap-2;
+
+                        img {
+                                @apply h-5 w-6;
+                        }
+
+                        span {
+                                @apply text-sm;
+                        }
+                }
+        }
+}
