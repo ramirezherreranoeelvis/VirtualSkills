@@ -6,6 +6,7 @@ import { PlanPagoCardComponent } from '../../../../components/atoms/plan-pago-ca
 import { PlanPago } from '../../../../interface/PlanPago';
 import { TitleComponent } from '../../../../components/atoms/title/title.component';
 import { TextShadowComponent } from '../../../../components/atoms/text-shadow/text-shadow.component';
+import { LearningPathCardComponent } from '../../../../components/atoms/learning-path-card/learning-path-card.component';
 
 @Component({
         selector: 'app-home',
@@ -14,7 +15,8 @@ import { TextShadowComponent } from '../../../../components/atoms/text-shadow/te
                 CommonModule,
                 SliderComponent,
                 PlanPagoCardComponent,
-                TextShadowComponent
+                TextShadowComponent,
+                LearningPathCardComponent
         ],
         templateUrl: './home.component.html',
         styleUrl: './home.component.scss'

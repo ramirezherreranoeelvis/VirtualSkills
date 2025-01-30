@@ -7,7 +7,7 @@
                 <article class="item" [class]="slideSelect.clase">
                         <div [class]="'background bg-[' + background + ']'"></div>
                         @if (imageUrl || imageUrl!='') {
-                        <img [src]="imageUrl" [alt]="slideSelect.title">
+                                <img [src]="imageUrl" [alt]="slideSelect.title">
                         }
 
                         <div class="data">
@@ -21,10 +21,10 @@
         </div>
         <div class="options">
                 @for (buttonSlide of buttonsSlide; track $index) {
-                <button class="btn-select-slide" [class]="buttonSlide.clase" (click)="clickBtnSlideSpecific($index)"></button>
+                        <button class="btn-select-slide" [class]="buttonSlide.clase" (click)="clickBtnSlideSpecific($index)"></button>
                 }
         </div>
         <!-- Controles -->
         <button class="btn-control btn-prev" (click)="moveSlide(-1)">&#10094;</button>
         <button class="btn-control btn-next" (click)="moveSlide(1)">&#10095;</button>
-</section>
+</section>+

@@ -1,1 +1,20 @@
-<p>courses works!</p>
+<section class="rutas">
+        <div class="title">
+                <text-shadow text="Explora Nuestras Rutas" classStyles="font-lexend" />
+        </div>
+        <div class="flex flex-wrap justify-evenly mt-10 gap-y-10 gap-x-4">
+                @for (ruta of rutas; track $index) {
+                <learning-path-card [path]="ruta" class="w-96 block" />
+                }
+        </div>
+</section>
+<section class="courses">
+        <div class="title">
+                <text-shadow text="Courses Disponibles" classStyles="font-lexend" />
+        </div>
+        <div class="flex flex-wrap justify-evenly mt-10 gap-y-10 gap-x-4">
+                @for (course of courses; track course.id) {
+                <course-card [course]="course" class="w-96 block" />
+                }
+        </div>
+</section>

@@ -1,0 +1,44 @@
+.learning-path-card {
+        @apply w-full h-full flex flex-col justify-between rounded-xl bg-[#1900ff10];
+        @apply shadow-md overflow-hidden transition-all duration-300 ease-in-out;
+
+        &__image img {
+                @apply w-full h-48 object-cover bg-cover bg-center;
+        }
+
+        .content {
+                padding: 20px;
+
+                &__title {
+                        @apply text-2xl font-bold text-white mb-3;
+                }
+
+                &__description {
+                        @apply text-sm text-gray-400 mb-3;
+                }
+
+                &__date {
+                        @apply text-xs text-gray-400 mb-3;
+                }
+
+                &__footer {
+                        @apply w-full flex justify-between items-center;
+                }
+        }
+
+        &__footer {
+                @apply w-full flex justify-center items-center flex-col gap-4 pb-6;
+
+                button {
+                        @apply w-10/12 h-9 rounded-md transition-all duration-300 ease-in-out;
+                }
+
+                .know-path {
+                        @apply bg-indigo-600 text-white;
+
+                        &:hover {
+                                @apply bg-indigo-700;
+                        }
+                }
+        }
+}
