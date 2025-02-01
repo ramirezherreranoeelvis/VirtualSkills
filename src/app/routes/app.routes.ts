@@ -15,7 +15,6 @@ export const routes: Routes = [
         {
                 path: '',
                 component: MainComponent,
-                title: 'home',
                 children: [
                         {
                                 path: '',
@@ -24,19 +23,23 @@ export const routes: Routes = [
                         },
                         {
                                 path:'',
+                                title:'Home',
                                 component:HomeComponent
 
                         },
                         {
                                 path: 'courses',
+                                title: 'Cursos',
                                 component: CoursesComponent,
                         },
                         {
                                 path: 'scholarships',
+                                title: 'Becas',
                                 component: ScholarshipsComponent,
                         },
                         {
                                 path: 'plans',
+                                title: 'Planes',
                                 component: PlansComponent,
                         }
                 ]

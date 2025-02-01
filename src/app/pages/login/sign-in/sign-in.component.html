@@ -10,15 +10,16 @@
                         @let requiredEmail = email?.hasError('required');
                         @let incorrectEmail = email?.hasError('email');
                         @let messageErrorEmail = requiredEmail? "El email es obligatorio": incorrectEmail?"El email no es válido":"Esta email es correcto";
-
-                        <div class="form-input" [ngClass]="{
+                        <!-- <div class="form-input" [ngClass]="{
                                  'before:content-[attr(message)]': messageErrorEmail
                         }" [attr.message]="messageErrorEmail">
                                 <input type="email" formControlName="email" placeholder="email" [ngClass]="{
                                         'incorrect' : (email?.invalid && touchEmail) && (requiredEmail || incorrectEmail),
                                         'correct': (email?.valid && touchEmail) && (!requiredEmail && !incorrectEmail),
                                 }">
-                        </div>
+                        </div> -->
+                        
+                        <input-field type="email" placeholder="email" formContro="email" [message]="messageErrorEmail" [control]="profile.get('email')"/>
 
                         @let password = profile.get('password');
                         @let touchPassword = password?.touched;
@@ -36,8 +37,8 @@
 
 
                         <div class="options">
-                                <input type="submit" [disabled]="profile.invalid" value="Iniciar sesión">
-                                <button type="button">Crear cuenta</button>
+                                <btn text="Iniciar sesión" [disabled]="profile.invalid" type="submit" classStyle="bg-[#283b55] outline-[#1e5097] hover:outline-[#408af1]"/>
+                                <btn text="Crear cuenta" classStyle="bg-[#283b55] outline-[#1e5097] hover:outline-[#408af1]"/>
                         </div>
                 </form>
                 <div class="line-other-options">
@@ -46,15 +47,8 @@
                         <div></div>
                 </div>
                 <div class="options">
-                        <button>
-                                <img src="https://www.svgrepo.com/show/355037/google.svg" alt="Google" />
-                                <span>Google</span>
-                        </button>
-                        <button>
-                                <img src="https://img.icons8.com/?size=100&id=62856&format=png&color=000000"
-                                        alt="GitHub" />
-                                <span>GitHub</span>
-                        </button>
+                        <btn text="Google" classStyle="bg-[#283b55] outline-[#1e5097] hover:outline-[#408af1]" img="https://www.svgrepo.com/show/355037/google.svg"/>
+                        <btn text="GitHub" classStyle="bg-[#283b55] outline-[#1e5097] hover:outline-[#408af1]" img="https://img.icons8.com/?size=100&id=62856&format=png&color=000000"/>
                 </div>
         </div>
 </main>

@@ -2,21 +2,19 @@ import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SliderComponent } from '../../../../components/slider/slider.component';
 import { Slide } from '../../../../interface/slide';
-import { PlanPagoCardComponent } from '../../../../components/atoms/plan-pago-card/plan-pago-card.component';
+import { PlanPagoCardComponent } from '../../../../components/molecules/plan-pago-card/plan-pago-card.component';
 import { PlanPago } from '../../../../interface/PlanPago';
 import { TitleComponent } from '../../../../components/atoms/title/title.component';
 import { TextShadowComponent } from '../../../../components/atoms/text-shadow/text-shadow.component';
-import { LearningPathCardComponent } from '../../../../components/atoms/learning-path-card/learning-path-card.component';
+import { LearningPathCardComponent } from '../../../../components/molecules/learning-path-card/learning-path-card.component';
 
 @Component({
         selector: 'app-home',
-        standalone: true,
         imports: [
                 CommonModule,
                 SliderComponent,
                 PlanPagoCardComponent,
-                TextShadowComponent,
-                LearningPathCardComponent
+                TextShadowComponent
         ],
         templateUrl: './home.component.html',
         styleUrl: './home.component.scss'

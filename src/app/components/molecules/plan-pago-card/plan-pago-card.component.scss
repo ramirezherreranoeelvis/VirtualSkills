@@ -43,17 +43,11 @@
         }
 
         .options {
-                @apply flex items-end justify-center;
+                @apply flex items-end justify-center mt-5;
 
-                button {
-                        // @apply bg-cyan-900 text-white text-sm font-bold rounded-md mt-5 bottom-0 px-5 py-2 transition-all;
-                        // box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
-                        @apply bg-[#1900ff69] text-white text-sm font-bold rounded-md mt-5 bottom-0 px-5 py-2 transition-all;
+                btn {
+                        @apply text-sm font-bold w-28 h-9;
                         box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
-
-                        &:hover {
-                                @apply bg-[#1900ffa9];
-                        }
                 }
 
         }

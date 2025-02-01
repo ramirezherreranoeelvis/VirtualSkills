@@ -1,5 +1,5 @@
 .course-card {
-        @apply w-full h-full flex flex-col justify-between rounded-xl bg-[#1900ff10];
+        @apply w-full h-full flex flex-col justify-between rounded-xl bg-[#1900ff10] pb-6;
         @apply shadow-md overflow-hidden transition-all duration-300 ease-in-out;
 
         &__image img {
@@ -44,26 +44,10 @@
         }
 
         &__footer {
-                @apply w-full flex justify-center items-center flex-col gap-4 pb-6;
+                @apply w-full flex justify-center items-center flex-col gap-4;
 
-                button {
-                        @apply w-10/12 h-9 rounded-md transition-all duration-300 ease-in-out;
-                }
-
-                .add-cart {
-                        @apply bg-blue-500 text-white;
-
-                        &:hover {
-                                @apply bg-blue-600;
-                        }
-                }
-
-                .details {
-                        @apply bg-yellow-500 text-white;
-
-                        &:hover {
-                                @apply bg-yellow-600;
-                        }
+                btn {
+                        @apply w-10/12 h-9;
                 }
         }
 }

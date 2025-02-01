@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { CourseCardComponent } from '../../../../components/atoms/course-card/course-card.component';
+import { CourseCardComponent } from '../../../../components/molecules/course-card/course-card.component';
 import { Course } from '../../../../interface/course';
 import { TextShadowComponent } from '../../../../components/atoms/text-shadow/text-shadow.component';
 import { Path } from '../../../../interface/path';
-import { LearningPathCardComponent } from "../../../../components/atoms/learning-path-card/learning-path-card.component";
+import { LearningPathCardComponent } from "../../../../components/molecules/learning-path-card/learning-path-card.component";
 
 @Component({
         selector: 'app-courses',

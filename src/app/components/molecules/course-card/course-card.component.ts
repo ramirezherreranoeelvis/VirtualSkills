@@ -1,9 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { Course } from '../../../interface/course';
+import { ButtonComponent } from '../../atoms/button/button.component';
 
 @Component({
         selector: 'course-card',
-        imports: [],
+        standalone: true,
+        imports: [ButtonComponent],
         templateUrl: './course-card.component.html',
         styleUrl: './course-card.component.scss'
 })
