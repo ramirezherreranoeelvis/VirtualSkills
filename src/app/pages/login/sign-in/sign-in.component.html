@@ -9,33 +9,31 @@
                         @let touchEmail = email?.touched;
                         @let requiredEmail = email?.hasError('required');
                         @let incorrectEmail = email?.hasError('email');
-                        @let messageErrorEmail = requiredEmail? "El email es obligatorio": incorrectEmail?"El email no es válido":"Esta email es correcto";
-                        <!-- <div class="form-input" [ngClass]="{
-                                 'before:content-[attr(message)]': messageErrorEmail
-                        }" [attr.message]="messageErrorEmail">
-                                <input type="email" formControlName="email" placeholder="email" [ngClass]="{
-                                        'incorrect' : (email?.invalid && touchEmail) && (requiredEmail || incorrectEmail),
-                                        'correct': (email?.valid && touchEmail) && (!requiredEmail && !incorrectEmail),
-                                }">
-                        </div> -->
-                        
-                        <input-field type="email" placeholder="email" formContro="email" [message]="messageErrorEmail" [control]="profile.get('email')"/>
+                        @let messageErrorEmail = requiredEmail? "El email es obligatorio":
+                         incorrectEmail?"El email no es válido":"Esta email es correcto";
+                        <input-field 
+                                [message]="messageErrorEmail" 
+                                placeholder="email"
+                                type="email"
+                                [control]="castFormControl(email)"
+                                [incorrect]="(email?.invalid && touchEmail) && (requiredEmail || incorrectEmail)"
+                                [correct]="(email?.valid && touchEmail) && (!requiredEmail && !incorrectEmail)"
+                        />
 
                         @let password = profile.get('password');
                         @let touchPassword = password?.touched;
                         @let requiredPassword = password?.hasError('required');
                         @let incorrectPassword = password?.hasError('minlength');
-                        @let messageErrorPassword = requiredPassword ? "La contraseña es obligatoria": incorrectPassword?"La contraseña debe tener al menos 6 caracteres": "La contraseña es correcta";
-                        <div class="form-input" [ngClass]="{
-                                'before:content-[attr(message)]': messageErrorPassword
-                        }" [attr.message]="messageErrorPassword">
-                                <input type="password" formControlName="password" placeholder="password" [ngClass]="{
-                                        'incorrect' : (password?.invalid && touchPassword) && (requiredPassword || incorrectPassword),
-                                        'correct': (password?.valid && touchPassword) && (!requiredPassword && !incorrectPassword)
-                                 }">
-                        </div>
-
-
+                        @let messageErrorPassword = requiredPassword ? "La contraseña es obligatoria": 
+                        incorrectPassword?"La contraseña debe tener al menos 6 caracteres": "La contraseña es correcta";
+                        <input-field
+                                [message]="messageErrorPassword"
+                                placeholder="password"
+                                type="password"
+                                [control]="castFormControl(password)"
+                                [incorrect]="(password?.invalid && touchPassword) && (requiredPassword || incorrectPassword)"
+                                [correct]="(password?.valid && touchPassword) && (!requiredPassword && !incorrectPassword)"
+                        />
                         <div class="options">
                                 <btn text="Iniciar sesión" [disabled]="profile.invalid" type="submit" classStyle="bg-[#283b55] outline-[#1e5097] hover:outline-[#408af1]"/>
                                 <btn text="Crear cuenta" classStyle="bg-[#283b55] outline-[#1e5097] hover:outline-[#408af1]"/>
