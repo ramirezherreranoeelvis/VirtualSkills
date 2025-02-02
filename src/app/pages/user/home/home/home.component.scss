@@ -45,30 +45,3 @@
                 }
         }
 }
-
-
-.planes {
-        @apply max-w-[100vw] my-20;
-
-
-        .title {
-                @apply text-5xl font-semibold tracking-tight sm:text-6xl text-center m-[40px];
-        }
-
-        .description {
-                @apply text-center text-xl;
-        }
-
-        .container {
-                @apply flex mx-auto gap-10 p-16;
-
-                plan-pago-card {
-                        @apply flex-1;
-                }
-
-                @media (width < 1060px) {
-                        @apply flex-col h-[1350px];
-
-                }
-        }
-}

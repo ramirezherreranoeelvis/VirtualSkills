@@ -16,10 +16,8 @@ import { InputFieldComponent } from '../../../components/atoms/input-field/input
         styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent {
-
         // Definición del formulario
         protected profile = new FormGroup({
-                campo: new FormControl(''),
                 email: new FormControl('', [Validators.required, Validators.email]),
                 password: new FormControl('', [Validators.required, Validators.minLength(6)])
         });
@@ -40,5 +38,22 @@ export class SignInComponent {
         protected castFormControl(abstractControl: AbstractControl | null): FormControl {
                 return abstractControl as FormControl;
         }
-
+        public getMessage(control: AbstractControl | null, require: string, invalid: string, correct: string): string {
+                if (!control) {
+                        return "";
+                }
+                if (control.hasError('required')) {
+                        return require;
+                }
+                if (control.invalid) {
+                        return invalid;
+                }
+                return correct;
+        }
+        public getValid(control: AbstractControl | null): boolean {
+                if (control?.valid && !control?.hasError('required')) {
+                        return true;
+                }
+                return false;
+        }
 }

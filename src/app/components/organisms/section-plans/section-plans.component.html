@@ -1,0 +1,8 @@
+<section class="planes">
+        <title-description [title]="title" [description]="description"/>
+        <div class="container">
+                @for (plan of tiers; track $index) {
+                        <plan-pago-card [tier]="plan"/>
+                }
+        </div>
+</section>

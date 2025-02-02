@@ -1,0 +1,14 @@
+.title {
+        @apply text-5xl font-semibold tracking-tight sm:text-6xl text-center m-[40px] mx-auto max-w-4xl;
+        @media (640px < width < 960px) {
+                @apply text-[2.9rem];
+                
+        }
+        @media (width < 640px) {
+                @apply text-4xl;
+        }
+}
+
+.description {
+        @apply text-center text-xl mx-auto max-w-2xl;
+}

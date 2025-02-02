@@ -1,0 +1,16 @@
+.planes {
+        @apply max-w-[100vw] my-20;
+
+        .container {
+                @apply flex mx-auto gap-10 p-16;
+
+                plan-pago-card {
+                        @apply flex-1;
+                }
+
+                @media (width < 1060px) {
+                        @apply flex-col h-[1350px];
+
+                }
+        }
+}

@@ -5,6 +5,7 @@ import { CoursesComponent } from '../pages/user/home/courses/courses.component';
 import { HomeComponent } from '../pages/user/home/home/home.component';
 import { ScholarshipsComponent } from '../pages/user/home/scholarships/scholarships.component';
 import { PlansComponent } from '../pages/user/home/plans/plans.component';
+import { SignUpComponent } from '../pages/login/sign-up/sign-up.component';
 
 export const routes: Routes = [
         {
@@ -22,9 +23,9 @@ export const routes: Routes = [
                                 pathMatch: 'full'
                         },
                         {
-                                path:'',
-                                title:'Home',
-                                component:HomeComponent
+                                path: '',
+                                title: 'Home',
+                                component: HomeComponent
 
                         },
                         {
@@ -45,9 +46,15 @@ export const routes: Routes = [
                 ]
         },
         {
-                path: 'register',
+                path: 'signin',
                 component: SignInComponent,
-                title: 'Login'
+                title: 'Inicia sesión'
+        },
+        {
+                path: 'signup',
+                component: SignUpComponent,
+                title: 'Crear cuenta'
         }
+
 
 ];

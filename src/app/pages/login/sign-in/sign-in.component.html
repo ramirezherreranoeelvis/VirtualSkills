@@ -6,37 +6,22 @@
                 </div>
                 <form [formGroup]="profile" (submit)="SignIn()">
                         @let email = profile.get('email');
-                        @let touchEmail = email?.touched;
-                        @let requiredEmail = email?.hasError('required');
-                        @let incorrectEmail = email?.hasError('email');
-                        @let messageErrorEmail = requiredEmail? "El email es obligatorio":
-                         incorrectEmail?"El email no es válido":"Esta email es correcto";
-                        <input-field 
-                                [message]="messageErrorEmail" 
-                                placeholder="email"
-                                type="email"
-                                [control]="castFormControl(email)"
-                                [incorrect]="(email?.invalid && touchEmail) && (requiredEmail || incorrectEmail)"
-                                [correct]="(email?.valid && touchEmail) && (!requiredEmail && !incorrectEmail)"
-                        />
+                        <input-field
+                                [message]="getMessage(email,'El email es obligatorio','El email no es válido','Esta email es correcto')"
+                                placeholder="email" type="email" [control]="castFormControl(email)"
+                                [valid]="getValid(email)" />
 
                         @let password = profile.get('password');
-                        @let touchPassword = password?.touched;
-                        @let requiredPassword = password?.hasError('required');
-                        @let incorrectPassword = password?.hasError('minlength');
-                        @let messageErrorPassword = requiredPassword ? "La contraseña es obligatoria": 
-                        incorrectPassword?"La contraseña debe tener al menos 6 caracteres": "La contraseña es correcta";
                         <input-field
-                                [message]="messageErrorPassword"
-                                placeholder="password"
-                                type="password"
-                                [control]="castFormControl(password)"
-                                [incorrect]="(password?.invalid && touchPassword) && (requiredPassword || incorrectPassword)"
-                                [correct]="(password?.valid && touchPassword) && (!requiredPassword && !incorrectPassword)"
-                        />
+                                [message]="getMessage(password,'La contraseña es obligatoria','Mínimo 6 caracteres','La contraseña es correcta')"
+                                placeholder="password" type="password" [control]="castFormControl(password)"
+                                [valid]="getValid(password)" />
+
                         <div class="options">
-                                <btn text="Iniciar sesión" [disabled]="profile.invalid" type="submit" classStyle="bg-[#283b55] outline-[#1e5097] hover:outline-[#408af1]"/>
-                                <btn text="Crear cuenta" classStyle="bg-[#283b55] outline-[#1e5097] hover:outline-[#408af1]"/>
+                                <btn text="Iniciar sesión" [disabled]="profile.invalid" type="submit"
+                                        classStyle="bg-[#283b55] outline-[#1e5097] hover:outline-[#408af1]" />
+                                <btn text="Crear cuenta"
+                                        classStyle="bg-[#283b55] outline-[#1e5097] hover:outline-[#408af1]" />
                         </div>
                 </form>
                 <div class="line-other-options">
@@ -45,8 +30,10 @@
                         <div></div>
                 </div>
                 <div class="options">
-                        <btn text="Google" classStyle="bg-[#283b55] outline-[#1e5097] hover:outline-[#408af1]" img="https://www.svgrepo.com/show/355037/google.svg"/>
-                        <btn text="GitHub" classStyle="bg-[#283b55] outline-[#1e5097] hover:outline-[#408af1]" img="https://img.icons8.com/?size=100&id=62856&format=png&color=000000"/>
+                        <btn text="Google" classStyle="bg-[#283b55] outline-[#1e5097] hover:outline-[#408af1]"
+                                img="https://www.svgrepo.com/show/355037/google.svg" />
+                        <btn text="GitHub" classStyle="bg-[#283b55] outline-[#1e5097] hover:outline-[#408af1]"
+                                img="https://img.icons8.com/?size=100&id=62856&format=png&color=000000" />
                 </div>
         </div>
 </main>

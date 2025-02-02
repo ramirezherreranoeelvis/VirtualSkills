@@ -1,0 +1,80 @@
+* {
+        appearance: none;
+}
+
+.login {
+        @apply relative base-container full-view;
+
+        &::after {
+                content: '';
+                @apply absolute top-0 left-0 h-full w-full base-image;
+                z-index: -1;
+                pointer-events: none;
+                background-image: url("/background.webp");
+        }
+}
+
+.panel {
+        @apply grid w-[1000px] h-[62vh] px-5 py-5 rounded-xl shadow-panel gap-3;
+        grid-template-areas: "logo form" "logo line" "logo other";
+        grid-template-columns: 1.5fr 2fr;
+        grid-template-rows: 2.5fr .5fr 1fr;
+
+        @media (width <=920px) {
+                @apply h-[85vh] w-[60vw] gap-3;
+                grid-template-areas: "logo" "form" "line" "other";
+                grid-template-columns: 100%;
+                grid-template-rows: 2fr 6fr 1fr 2fr;
+        }
+
+        .logo {
+                grid-area: logo;
+                @apply flex justify-center items-center flex-col gap-3;
+
+                img {
+                        @apply h-40 w-40;
+                }
+        }
+
+        form {
+                grid-area: form;
+                @apply flex flex-col gap-8 justify-center;
+
+                fieldset {
+                        @apply flex gap-5 w-full;
+
+                        input-field {
+                                flex: 1;
+                        }
+                }
+
+                &.options {
+
+                        btn {
+                                @apply w-32;
+                        }
+                }
+        }
+
+        .line-other-options {
+                grid-area: line;
+                @apply flex items-center justify-center;
+
+                span {
+                        @apply w-[350px] px-4 text-gray-400 text-sm text-center;
+                }
+
+                div {
+                        @apply border-t border-[#85a4c27e] w-full;
+                }
+        }
+
+        .options {
+                grid-area: other;
+                @apply flex gap-7 justify-center items-center;
+
+                btn {
+                        @apply w-40 h-11 text-sm;
+                }
+        }
+}

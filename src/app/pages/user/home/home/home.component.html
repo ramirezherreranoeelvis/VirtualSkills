@@ -19,21 +19,10 @@
                         </div>
                         <app-slider [dataSalides]="dataSalides" class="carousel" />
                 </section>
-                <section class="planes">
-                        <div class="title">
-                                <text-shadow text="Bienvenido a SkillConnect" classStyles="font-lexend"/>
-                        </div>
-                        <p class="description">Explora nuestras opciones de aprendizaje y comienza tu viaje hacia el éxito.</p>
-                        <div class="container">
-                                @for (plan of tiers; track $index) {
-                                        <plan-pago-card [tier]="plan"/>
-                                }
-                        </div>
-                </section>
+                <section-plans title="Bienvenido a SkillConnect"
+                        description="Explora nuestras opciones de aprendizaje y comienza tu viaje hacia el éxito." />
         </main>
         <footer>
 
         </footer>
 </div>
-
-
