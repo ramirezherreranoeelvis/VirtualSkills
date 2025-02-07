@@ -1,0 +1,31 @@
+header {
+        @apply flex items-center px-6;
+
+        img {
+                @apply box-content w-40 px-5 cursor-pointer;
+        }
+
+        .pages {
+                @apply flex-[2];
+
+                ul {
+                        @apply w-full flex justify-center;
+                }
+
+                a {
+                        @apply px-6 py-3 bg-[#1b355e7a];
+                }
+        }
+
+        .session {
+                @apply flex gap-4;
+
+                ul {
+                        @apply flex gap-0;
+                }
+
+                a {
+                        @apply px-6 py-3 bg-[#1b355e7a];
+                }
+        }
+}

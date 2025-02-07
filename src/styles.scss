@@ -3,10 +3,23 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
 
-@layer utilities{
-        .full-view{
-               @apply h-[100vh] w-[100vw];
+        // diseña scroll
+        &::-webkit-scrollbar {
+                width: 8px;
+                background-color: #141342;
+                &-thumb {
+                        border-radius: 10px;
+                        background: #1e4ce4;
+                        cursor: pointer;
+                }
+        }
+}
+
+@layer utilities {
+        .full-view {
+                @apply h-[100vh] w-[100vw];
         }
 
         .base-container {
@@ -17,7 +30,7 @@
                 @apply bg-cover bg-no-repeat bg-center;
         }
 
-        .outline-base{
+        .outline-base {
                 @apply outline-none outline-offset-0;
         }
 }
@@ -42,6 +55,7 @@
         font-family: 'Bubblegum Sans';
         src: url('/assets/Fonts/BubblegumSans-Regular.ttf') format('truetype');
 }
+
 @font-face {
         font-family: 'lexend';
         src: url('https://fonts.googleapis.com/css2?family=Lexend&display=swap') format('truetype');

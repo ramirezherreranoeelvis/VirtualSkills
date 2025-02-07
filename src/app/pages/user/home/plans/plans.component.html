@@ -1,6 +1,16 @@
-<div class="base">
+<div class="relative overflow-hidden max-w-[100vw]">
+        <motion-img class="absolute -z-[1] opacity-50 animate-pulse " [image]="assets['pacman-blue']"
+                classAnimation="animation-1" />
+        <motion-img class="absolute -z-[1] opacity-50 animate-pulse" [image]="assets['pacman-orange']"
+                classAnimation="animation-2" />
+        <motion-img class="absolute -z-[1] opacity-50 animate-pulse" [image]="assets['pacman-blue']"
+                classAnimation="animation-3" />
         <main>
-                <section-plans title="Elige el plan adecuado para ti"
+                <motion-img class="absolute translate-x-[72vw] blur-[.5px] contrast-200"
+                        [image]="assets['mando-neon-blue']" classAnimation="rotate" />
+                <motion-img class="absolute translate-x-[18vw] blur-[.5px] contrast-200"
+                        [image]="assets['mando-neon-blue']" classAnimation="rotate" />
+                <section-plans class="flex-1" title="Elige el plan adecuado para ti"
                         description="Invierte en ti mismo con nuestros planes exclusivos. Accede a cursos 24/7, herramientas personalizadas y todo lo que necesitas para alcanzar tus metas. ¡Elige el tuyo y comienza hoy!" />
         </main>
 </div>

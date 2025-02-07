@@ -2,10 +2,12 @@ import { Component, Input } from '@angular/core';
 import { Course } from '../../../interface/course';
 import { CourseCardComponent } from '../../molecules/course-card/course-card.component';
 import { TitleDescriptionComponent } from '../../molecules/title-description/title-description.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
         selector: 'section-courses',
         imports: [
+                CommonModule,
                 CourseCardComponent,
                 TitleDescriptionComponent
         ],

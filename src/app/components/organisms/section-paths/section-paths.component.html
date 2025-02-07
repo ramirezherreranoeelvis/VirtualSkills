@@ -1,8 +1,6 @@
 <section class="rutas">
-        <title-description [title]="title" [description]="description"/>
+        <title-description [title]="title" [description]="description" />
         <div class="flex flex-wrap justify-evenly mt-10 gap-y-10 gap-x-4">
-                @for (path of paths; track $index) {
-                <learning-path-card [path]="path" class="w-96 block" />
-                }
+                <learning-path-card *ngFor="let path of paths" [path]="path" class="w-96 block" />
         </div>
 </section>

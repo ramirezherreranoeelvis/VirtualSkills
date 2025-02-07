@@ -5,7 +5,7 @@
                 @apply flex mx-auto gap-10 p-16;
 
                 plan-pago-card {
-                        @apply flex-1;
+                        @apply flex-1 backdrop-blur-[2px];
                 }
 
                 @media (width < 1060px) {

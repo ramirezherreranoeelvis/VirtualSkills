@@ -3,5 +3,5 @@ export interface Slide {
         description: string;
         image: string;
         clase: string;
-        background:string;
+        background:string
 }

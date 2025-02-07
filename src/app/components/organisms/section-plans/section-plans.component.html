@@ -1,8 +1,6 @@
 <section class="planes">
         <title-description [title]="title" [description]="description"/>
         <div class="container">
-                @for (plan of tiers; track $index) {
-                        <plan-pago-card [tier]="plan"/>
-                }
+                <plan-pago-card *ngFor="let plan of tiers" [tier]="plan"/>
         </div>
 </section>

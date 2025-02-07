@@ -4,44 +4,4 @@
         .carousel {
                 @apply w-full h-[540px] flex;
         }
-
-        .line-h {
-                @apply absolute h-[3px] flex items-center w-full bg-[#5BBCFF];
-
-                .background {
-                        @apply bg-[#5BBCFF] blur-[4px] h-1 w-full;
-                }
-
-                .brd {
-                        @apply border-b-2 border-[#BDEFFF] absolute h-[1px] w-full blur-[2px];
-                }
-
-                &.b {
-                        @apply top-0;
-                }
-
-                &.t {
-                        @apply bottom-0;
-                }
-        }
-
-        .line-v {
-                @apply absolute h-[540px] w-[3px] flex items-center bg-[#5BBCFF];
-
-                .background {
-                        @apply bg-[#5BBCFF] blur-[4px] w-[3px] h-full;
-                }
-
-                .brd {
-                        @apply border-l-2 border-[#BDEFFF] absolute w-[1px] h-full blur-[2px];
-                }
-
-                &.r {
-                        @apply right-0;
-                }
-
-                &.l {
-                        @apply left-0;
-                }
-        }
 }

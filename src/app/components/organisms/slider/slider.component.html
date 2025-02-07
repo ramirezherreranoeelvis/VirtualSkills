@@ -1,0 +1,14 @@
+<section class="carousel">
+        <div class="container">
+                <slide-card *ngFor="let slideSelect of dataSalides" [slide]="slideSelect" />
+        </div>
+        <div class="options">
+                @for (buttonSlide of buttonsSlide; track $index) {
+                <button class="btn-select-slide" [class]="buttonSlide.clase"
+                        (click)="clickBtnSlideSpecific($index)"></button>
+                }
+        </div>
+        <!-- Controles -->
+        <button class="btn-control btn-prev" (click)="moveSlide(-1)">&#10094;</button>
+        <button class="btn-control btn-next" (click)="moveSlide(1)">&#10095;</button>
+</section>+

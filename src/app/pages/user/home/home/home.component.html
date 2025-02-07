@@ -1,23 +1,12 @@
 <div class="base">
         <main>
                 <section class="carouselsect">
-                        <div class="line-h t">
-                                <div class="background"></div>
-                                <div class="brd"></div>
-                        </div>
-                        <div class="line-v l">
-                                <div class="background"></div>
-                                <div class="brd"></div>
-                        </div>
-                        <div class="line-v r">
-                                <div class="background"></div>
-                                <div class="brd"></div>
-                        </div>
-                        <div class="line-h b">
-                                <div class="background"></div>
-                                <div class="brd"></div>
-                        </div>
-                        <app-slider [dataSalides]="dataSalides" class="carousel" />
+                        <line-border class="" direction="line-h" position="top" />
+                        <line-border class="absolute" direction="line-v" position="left" />
+                        <line-border class="absolute right-0" direction="line-v" position="right" />
+                        <line-border class="" direction="line-h" position="bottom" />
+                        <slider [dataSalides]="slidesVariants.default" class="carousel" />
+
                 </section>
                 <section-plans title="Bienvenido a SkillConnect"
                         description="Explora nuestras opciones de aprendizaje y comienza tu viaje hacia el éxito." />

@@ -1,0 +1,13 @@
+<article class="slide-card" [class]="slide.clase">
+        <div class="data">
+                <img [src]="slide.image" class="" />
+                <div class="content flex flex-col gap-3">
+                        <h3 class="title">{{slide.title}}</h3>
+                        <p class="description">{{slide.description}}</p>
+                        <div class="options flex justify-center gap-5">
+                                <btn text="Nuestro Facebook" class="block w-[200px] h-[50px] text-black" classStyle="bg-yellow-500 hover:bg-yellow-600"/>
+                                <btn text="Contáctenos" class="block w-[200px] h-[50px] text-black" classStyle="bg-yellow-500 hover:bg-yellow-600"/>
+                        </div>
+                </div>
+        </div>
+</article>

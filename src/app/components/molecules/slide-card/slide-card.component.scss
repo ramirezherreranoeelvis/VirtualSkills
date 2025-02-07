@@ -1,0 +1,68 @@
+.slide-card {
+        @apply flex flex-shrink-0 w-[100vw] h-[100%] text-white justify-center items-center absolute overflow-hidden;
+        transition-property: left;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: .7s;
+
+        img {
+                @apply w-1/3 max-w-sm object-contain;
+                animation: img 4s ease-in-out infinite;
+        }
+
+        .data {
+                @apply flex font-sans;
+        }
+
+        .title {
+                @apply text-4xl font-bold mb-4;
+        }
+
+        .description {
+                @apply text-xl;
+        }
+
+        &.prev2 {
+                @apply -left-[200vw];
+
+                @starting-style {
+
+                        transition: none;
+                }
+        }
+
+        &.prev {
+                @apply -left-[100vw];
+        }
+
+        &.active {
+                @apply left-[0];
+        }
+
+        &.next {
+                @apply left-[100vw];
+        }
+
+        &.next2 {
+                @apply left-[200vw];
+                transition: none;
+        }
+
+        &.none {
+                transition: none;
+                display: none
+        }
+}
+
+@keyframes img {
+        from {
+                transform: scale(.7);
+        }
+
+        50% {
+                transform: scale(.8);
+        }
+
+        to {
+                transform: scale(.7);
+        }
+}

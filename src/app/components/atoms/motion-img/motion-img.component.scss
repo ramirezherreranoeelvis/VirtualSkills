@@ -1,0 +1,114 @@
+@keyframes pacman1 {
+        from {
+                transform: translateX(0) translateY(0);
+        }
+
+        25% {
+                transform: translateX(500px) translateY(180px);
+        }
+
+        50% {
+                transform: translateX(1300px) translateY(100px);
+        }
+
+        75% {
+                transform: translateX(500px) translateY(180px);
+        }
+
+        to {
+                transform: translateX(0) translateY(0);
+        }
+}
+
+@keyframes pacman2 {
+        from {
+                transform: translateX(0) translateY(600px);
+        }
+
+        25% {
+                transform: translateX(300px) translateY(450px);
+        }
+
+        50% {
+                transform: translateX(1300px) translateY(400px);
+        }
+
+        75% {
+                transform: translateX(300px) translateY(450px);
+        }
+
+        to {
+                transform: translateX(0) translateY(600px);
+        }
+}
+
+@keyframes pacman3 {
+        from {
+                transform: translateX(0px) translateY(900px);
+        }
+
+        25% {
+                transform: translateX(500px) translateY(750px);
+        }
+
+        50% {
+                transform: translateX(1300px) translateY(700px);
+        }
+
+        75% {
+                transform: translateX(500px) translateY(750px);
+        }
+
+        to {
+                transform: translateX(0px) translateY(900px);
+        }
+}
+
+@keyframes rotate {
+        from {
+                transform: rotate(0);
+        }
+
+        33% {
+                transform: rotate(15deg);
+        }
+
+        66% {
+                transform: rotate(-15deg);
+        }
+
+        to {
+                transform: rotate(0);
+        }
+}
+
+@keyframes scale {
+        to {
+                transform: scale(1);
+        }
+
+        50% {
+                transform: scale(1.1);
+        }
+
+        from {
+                transform: scale(1)
+        }
+}
+
+
+.animation-1 {
+        animation: pacman1 20s ease-in-out infinite;
+}
+
+.animation-2 {
+        animation: pacman2 15s ease-in-out infinite;
+}
+
+.animation-3 {
+        animation: pacman3 15s ease-in-out infinite;
+}
+
+.rotate {
+        animation: rotate 3s ease-in-out infinite, scale 3s ease-in-out infinite;
+}

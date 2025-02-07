@@ -1,0 +1,39 @@
+.line-h {
+        @apply absolute h-[3px] flex items-center w-full bg-[#2a04ff];
+
+        .background {
+                @apply bg-[#5BBCFF] blur-[4px] h-1 w-full;
+        }
+
+        .brd {
+                @apply border-b-2 border-[#BDEFFF] absolute h-[1px] w-full blur-[2px];
+        }
+
+        &.bottom {
+                @apply top-0;
+        }
+
+        &.top {
+                @apply bottom-0;
+        }
+}
+
+.line-v {
+        @apply absolute h-[540px] w-[3px] flex items-center bg-[#2a04ff];
+
+        .background {
+                @apply bg-[#5BBCFF] blur-[4px] w-[3px] h-full;
+        }
+
+        .brd {
+                @apply border-l-2 border-[#BDEFFF] absolute w-[1px] h-full blur-[2px];
+        }
+
+        &.right {
+                @apply right-0;
+        }
+
+        &.left {
+                @apply left-0;
+        }
+}
