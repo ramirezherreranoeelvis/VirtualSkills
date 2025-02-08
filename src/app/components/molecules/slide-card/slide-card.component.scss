@@ -1,5 +1,5 @@
 .slide-card {
-        @apply flex flex-shrink-0 w-[100vw] h-[100%] text-white justify-center items-center absolute overflow-hidden;
+        @apply flex flex-shrink-0 w-[100vw] h-[100%] justify-center items-center absolute overflow-hidden;
         transition-property: left;
         transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         transition-duration: .7s;
@@ -10,7 +10,7 @@
         }
 
         .data {
-                @apply flex font-sans;
+                @apply flex font-sans text-white;
         }
 
         .title {

@@ -12,9 +12,10 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
                         [type]="type"
                         [placeholder]="placeholder"
                         [formControl]="control"
+                        [class]="outline + ' ' + background"
                         [ngClass]="{
-                                'incorrect' : touched && !valid,
-                                'correct': touched && valid,
+                                ' incorrect' : touched && !valid,
+                                ' correct': touched && valid,
                 }"
                 (click)="touched=true"
                 >
@@ -31,8 +32,8 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
         }
 
         input {
-                @apply outline-none outline-offset-0 border-none outline-1 pl-5 py-2.5 rounded-md w-full;
-                @apply bg-[#283b55] outline-[#1e5097] focus:outline-[#408af1];
+                @apply w-full pl-5 py-2.5 rounded-md;
+                @apply outline outline-offset-0 border-none outline-1 ;
         }
 
         .correct {
@@ -51,4 +52,6 @@ export class InputFieldComponent {
         @Input() control: FormControl = new FormControl('');
         @Input() valid: boolean | undefined = false;
         touched: boolean = false;
+        @Input() background: string = "bg-transparent";
+        @Input() outline: string = "outline-transparent";
 }

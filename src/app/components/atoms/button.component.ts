@@ -7,8 +7,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
         <button
                 [type]="type"
                 [disabled]="disabled"
-                (click)="click()"
-                [class]="'outline-none ' + classStyle"
+                (click)="this.onClick.emit()"
+                [class]="outline + ' ' + background"
         >
                 @if (img) {
                         <img [src]=" img" [alt]="text" [class]="classImage" />
@@ -25,26 +25,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
         `]
 })
 export class ButtonComponent {
-
         @Input() text: string = "button";
-        @Input() set type(value: string) {
-                const validTypes = ['button', 'submit', 'reset'];
-                this._type = validTypes.includes(value) ? value : 'button';
-        }
+        @Input() type:string = "button";
         @Input() disabled: boolean = false;
-        @Input() classStyle: string = "";
+        @Input() background: string = "bg-transparent";
+        @Input() outline: string = "outline-transparent";
         @Input() img: string = "";
         @Input() classImage: string = "h-5 w-6";
         @Output() onClick: EventEmitter<void> = new EventEmitter<void>();
-
-
-        public click(): void {
-                this.onClick.emit();
-        }
-
-        get type(): string {
-                return this._type;
-        }
-
-        private _type: string = 'button';
 }

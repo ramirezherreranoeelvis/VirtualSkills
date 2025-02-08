@@ -15,45 +15,52 @@
                         <fieldset>
                                 <input-field
                                         [message]="getMessage(firstName,'El nombre es obligatorio','El nombre no es válido','')"
+                                        background="bg-[#283b55]" outline="outline-[#1e5097] focus:outline-[#408af1]"
                                         placeholder="Nombres" [control]="castFormControl(firstName)"
                                         [valid]="getValid(firstName)" />
 
                                 <input-field
                                         [message]="getMessage(lastName,'El apellido es obligatorio','El apellido no es válido','')"
+                                        background="bg-[#283b55]" outline="outline-[#1e5097] focus:outline-[#408af1]"
                                         placeholder="Apellidos" [control]="castFormControl(lastName)"
                                         [valid]="getValid(lastName)" />
                         </fieldset>
 
                         <input-field
                                 [message]="getMessage(username,'El nombre de usuario es obligatorio','El nombre de usuario no es válido','')"
+                                background="bg-[#283b55]" outline="outline-[#1e5097] focus:outline-[#408af1]"
                                 placeholder="Username" [control]="castFormControl(username)"
                                 [valid]="getValid(username)" />
 
                         <input-field
                                 [message]="getMessage(email,'El email es obligatorio','El email no es válido','Esta email es correcto')"
+                                background="bg-[#283b55]" outline="outline-[#1e5097] focus:outline-[#408af1]"
                                 placeholder="email" type="email" [control]="castFormControl(email)"
                                 [valid]="getValid(email)" />
 
                         <input-field
                                 [message]="getMessage(birthDate,'La fecha de nacimiento es obligatoria','La fecha nacimiento es válido', '')"
+                                background="bg-[#283b55]" outline="outline-[#1e5097] focus:outline-[#408af1]"
                                 type="date" [control]="castFormControl(birthDate)" [valid]="getValid(birthDate)" />
 
                         <fieldset>
                                 <input-field
                                         [message]="getMessage(password,'La contraseña es obligatoria','Mínimo 6 caracteres','La contraseña es correcta')"
+                                        background="bg-[#283b55]" outline="outline-[#1e5097] focus:outline-[#408af1]"
                                         placeholder="password" type="password" [control]="castFormControl(password)"
                                         [valid]="getValid(password)" />
 
                                 <input-field
                                         [message]="getMessage(confirmPassword,'La contraseña es obligatoria','Mínimo 6 caracteres','La contraseña es correcta')"
+                                        background="bg-[#283b55]" outline="outline-[#1e5097] focus:outline-[#408af1]"
                                         placeholder="confirmPassword" type="password"
                                         [control]="castFormControl(confirmPassword)"
                                         [valid]="getValid(confirmPassword)" />
                         </fieldset>
 
                         <div class="options">
-                                <btn text="Registrarse"
-                                        classStyle="bg-[#283b55] outline-[#1e5097] hover:outline-[#408af1]" />
+                                <btn text="Registrarse" outline="outline-[#1e5097] hover:outline-[#408af1]"
+                                        background="bg-[#283b55]" />
                         </div>
                 </form>
                 <div class="line-other-options">
@@ -62,9 +69,9 @@
                         <div></div>
                 </div>
                 <div class="options">
-                        <btn text="Google" classStyle="bg-[#283b55] outline-[#1e5097] hover:outline-[#408af1]"
+                        <btn text="Google" outline="outline-[#1e5097] hover:outline-[#408af1]" background="bg-[#283b55]"
                                 img="https://www.svgrepo.com/show/355037/google.svg" />
-                        <btn text="GitHub" classStyle="bg-[#283b55] outline-[#1e5097] hover:outline-[#408af1]"
+                        <btn text="GitHub" outline="outline-[#1e5097] hover:outline-[#408af1]" background="bg-[#283b55]"
                                 img="https://img.icons8.com/?size=100&id=62856&format=png&color=000000" />
                 </div>
         </div>

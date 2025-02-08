@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Slide } from '../../../interface/slide';
-import { ButtonComponent } from '../../atoms/button/button.component';
+import { ButtonComponent } from '../../atoms/button.component';
 
 @Component({
         selector: 'slide-card',

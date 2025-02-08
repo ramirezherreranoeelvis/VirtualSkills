@@ -1,3 +1,4 @@
+<hamburger-menu (clickMenu)="clickMenu()" />
 <header>
         <img [src]="assets.icons['logo-white']" alt="" routerLink="/">
         <nav class="pages">
@@ -15,3 +16,22 @@
                 </ul>
         </nav>
 </header>
+<div #modal class="modal-header">
+        <div class="panel">
+                <img [src]="assets.icons['logo-white']" alt="" routerLink="/">
+                <nav class="pages">
+                        <ul>
+                                <li><a routerLink="/">Home</a></li>
+                                <li><a routerLink="/courses">Cursos</a></li>
+                                <li><a routerLink="/scholarships">Becas</a></li>
+                                <li><a routerLink="/plans">Planes</a></li>
+                        </ul>
+                </nav>
+                <nav class="session">
+                        <ul>
+                                <li><a routerLink="/signin">Iniciar Sesión</a></li>
+                                <li><a routerLink="/signup">Registrarse</a></li>
+                        </ul>
+                </nav>
+        </div>
+</div>

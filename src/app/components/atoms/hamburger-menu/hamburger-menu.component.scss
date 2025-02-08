@@ -1,0 +1,44 @@
+$line__menu: linear-gradient(90deg, #0077ff, #000768);
+
+.menu {
+        @apply flex flex-col justify-between size-[42px] scale-150 p-[5px] rounded-md cursor-pointer;
+        background: radial-gradient(50% 50% at 50% 50%, transparent 0%, #13027057 100%);
+        box-shadow: 0 0 20px 0 #17086e33;
+
+        .line {
+                @apply relative overflow-hidden h-[6px] w-full rounded-[50px] origin-left transition-all opacity-100;
+                background: $line__menu;
+
+                &::after {
+                        content: "";
+                        @apply top-0 -left-14 rounded-[50px] absolute w-[120%] h-full blur-sm;
+                        background: $line__menu;
+                        animation: menu 1s linear infinite;
+                }
+        }
+}
+
+.active .line {
+
+        &:nth-child(1) {
+                transform: rotate(40.5deg) scaleX(1.3);
+        }
+
+        &:nth-child(2) {
+                opacity: 0;
+        }
+
+        &:nth-child(3) {
+                transform: rotate(-40.5deg) scaleX(1.3);
+        }
+}
+
+@keyframes menu {
+        from {
+                left: -55px;
+        }
+
+        to {
+                left: 47px;
+        }
+}

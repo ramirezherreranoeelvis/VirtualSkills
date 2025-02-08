@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ButtonComponent } from '../../../components/atoms/button/button.component';
-import { InputFieldComponent } from '../../../components/atoms/input-field/input-field.component';
+import { ButtonComponent } from '../../../components/atoms/button.component';
+import { InputFieldComponent } from '../../../components/atoms/input-field.component';
 @Component({
         selector: 'app-sign-in',
         standalone: true,

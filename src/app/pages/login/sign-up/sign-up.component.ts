@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { ButtonComponent } from '../../../components/atoms/button/button.component';
-import { InputFieldComponent } from '../../../components/atoms/input-field/input-field.component';
+import { ButtonComponent } from '../../../components/atoms/button.component';
+import { InputFieldComponent } from '../../../components/atoms/input-field.component';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { UserForm } from '../../../interface/user';
 @Component({

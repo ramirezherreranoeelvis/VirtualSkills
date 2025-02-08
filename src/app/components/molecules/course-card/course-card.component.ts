@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Course } from '../../../interface/course';
-import { ButtonComponent } from '../../atoms/button/button.component';
+import { ButtonComponent } from '../../atoms/button.component';
 
 @Component({
         selector: 'course-card',

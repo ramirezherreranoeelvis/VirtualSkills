@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { TextShadowComponent } from '../../atoms/text-shadow/text-shadow.component';
+import { TextShadowComponent } from '../../atoms/text-shadow.component';
 
 @Component({
         selector: 'title-description',

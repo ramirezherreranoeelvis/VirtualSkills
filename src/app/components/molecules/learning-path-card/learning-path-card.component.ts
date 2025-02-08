@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Path } from '../../../interface/path';
-import { ButtonComponent } from '../../atoms/button/button.component';
+import { ButtonComponent } from '../../atoms/button.component';
 
 @Component({
         selector: 'learning-path-card',
