@@ -1,15 +1,17 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
-        selector: 'text-shadow',
-        imports: [],
-        template: `
-        <p [class]="classStyles">
-                <span class="text-shadow" [class]="classStyles">{{text}}</span>
-                {{text}}
-        </p>
-        `,
-        styles: `
+      selector: 'text-shadow',
+      imports: [],
+      template: `
+            <p [class]="classStyles()">
+                  <span class="text-shadow" [class]="classStyles()">{{
+                        text()
+                  }}</span>
+                  {{ text() }}
+            </p>
+      `,
+      styles: `
         p {
                 @apply relative inline-block uppercase font-black text-[#0b0b14];
 
@@ -22,9 +24,9 @@ import { Component, Input } from '@angular/core';
                         -webkit-text-fill-color: transparent;
                 }
         }
-  `
+  `,
 })
 export class TextShadowComponent {
-        @Input() text!: string;
-        @Input() classStyles!: string;
+      public text = input.required<string>();
+      public classStyles = input.required<string>();
 }

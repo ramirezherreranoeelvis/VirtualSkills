@@ -1,6 +1,6 @@
 <section class="carousel">
         <div class="container">
-                <slide-card *ngFor="let slideSelect of dataSalides" [slide]="slideSelect" />
+                <slide-card *ngFor="let slideSelect of dataSalides()" [slide]="slideSelect" />
         </div>
         <div class="options">
                 @for (buttonSlide of buttonsSlide; track $index) {

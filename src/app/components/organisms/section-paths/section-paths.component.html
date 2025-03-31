@@ -1,5 +1,5 @@
 <section class="rutas">
-        <title-description [title]="title" [description]="description" />
+        <title-description [title]="title()" [description]="description()" />
         <div class="flex flex-wrap justify-evenly mt-10 gap-y-10 gap-x-4">
                 <learning-path-card *ngFor="let path of paths" [path]="path" class="w-96 block" />
         </div>

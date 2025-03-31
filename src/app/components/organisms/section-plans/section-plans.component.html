@@ -1,5 +1,5 @@
 <section class="planes">
-        <title-description [title]="title" [description]="description"/>
+        <title-description [title]="title()" [description]="description()"/>
         <div class="container">
                 <plan-pago-card *ngFor="let plan of tiers" [tier]="plan"/>
         </div>

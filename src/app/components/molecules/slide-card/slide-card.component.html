@@ -1,15 +1,23 @@
-<article class="slide-card" [class]="slide.clase">
-    <div class="data">
-        <img [src]="slide.image" class="" />
-        <div class="content flex flex-col gap-3">
-            <h3 class="title">{{slide.title}}</h3>
-            <p class="description">{{slide.description}}</p>
-            <div class="options flex justify-center gap-5 text-black font-bold">
-                <btn text="Nuestro Facebook" class="block w-[200px] h-[50px]"
-                    background="bg-blue-600 hover:bg-blue-700" />
-                <btn text="Contáctenos" class="block w-[200px] h-[50px]"
-                    background="bg-blue-600 hover:bg-blue-700" />
+<article class="slide-card" [class]="slide().clase">
+      <div class="data">
+            <img [src]="slide().image" class="" />
+            <div class="content flex flex-col gap-3">
+                  <h3 class="title">{{ slide().title }}</h3>
+                  <p class="description">{{ slide().description }}</p>
+                  <div
+                        class="options flex justify-center gap-5 text-black font-bold"
+                  >
+                        <btn
+                              text="Nuestro Facebook"
+                              class="block w-[200px] h-[50px]"
+                              background="bg-blue-600 hover:bg-blue-700"
+                        />
+                        <btn
+                              text="Contáctenos"
+                              class="block w-[200px] h-[50px]"
+                              background="bg-blue-600 hover:bg-blue-700"
+                        />
+                  </div>
             </div>
-        </div>
-    </div>
+      </div>
 </article>

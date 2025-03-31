@@ -1,14 +1,14 @@
 <div class="learning-path-card">
         <div class="learning-path-card__image">
-                <img [src]="path.image" alt="course image" />
+                <img [src]="path().image" alt="course image" />
         </div>
         <div class="content">
-                <h3 class="content__title">{{ path.name }}</h3>
-                <p class="content__description">{{ path.description }}</p>
-                <p class="content__date">Creado el: {{ path.creationDate }}</p>
+                <h3 class="content__title">{{ path().name }}</h3>
+                <p class="content__description">{{ path().description }}</p>
+                <p class="content__date">Creado el: {{ path().creationDate }}</p>
                 <div class="content__footer">
-                        <span class="content__rating">{{path.courses}} Cursos</span>
-                        <span class="content__price">{{path.time}}</span>
+                        <span class="content__rating">{{path().courses}} Cursos</span>
+                        <span class="content__price">{{path().time}}</span>
                 </div>
         </div>
         <footer class="learning-path-card__footer">

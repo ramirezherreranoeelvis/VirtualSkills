@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input, Input } from '@angular/core';
 import { Course } from '../../../interfaces/course';
 import { ButtonComponent } from '../../atoms/button.component';
 
@@ -10,5 +10,5 @@ import { ButtonComponent } from '../../atoms/button.component';
         styleUrl: './course-card.component.scss'
 })
 export class CourseCardComponent {
-        @Input() course!: Course;
+        course = input.required<Course>();
 }

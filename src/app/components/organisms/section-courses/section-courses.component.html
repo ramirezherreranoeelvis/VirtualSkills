@@ -1,6 +1,10 @@
 <section class="courses">
-        <title-description [title]="title" [description]="description" />
-        <div class="flex flex-wrap justify-evenly mt-10 gap-y-10 gap-x-4">
-                <course-card *ngFor="let course of courses" [course]="course" class="w-96 block" />
-        </div>
+      <title-description [title]="title()" [description]="description()" />
+      <div class="flex flex-wrap justify-evenly mt-10 gap-y-10 gap-x-4">
+            <course-card
+                  *ngFor="let course of courses"
+                  [course]="course"
+                  class="w-96 block"
+            />
+      </div>
 </section>

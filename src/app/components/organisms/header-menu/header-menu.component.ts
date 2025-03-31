@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, viewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { assets } from '../../../routes/routes-asstes';
 import { HamburgerMenuComponent } from "../../atoms/hamburger-menu/hamburger-menu.component";
@@ -12,7 +12,7 @@ import { HamburgerMenuComponent } from "../../atoms/hamburger-menu/hamburger-men
         styleUrl: './header-menu.component.scss'
 })
 export class HeaderMenuComponent {
-        @ViewChild('modal') modal!: ElementRef;
+        modal = viewChild.required<ElementRef<HTMLDivElement>>('modal');
         assets = assets
 
         isMenuOpen: boolean = false;
@@ -26,7 +26,7 @@ export class HeaderMenuComponent {
         }
 
         clickMenu(){
-                const menuElement = this.modal.nativeElement;
+                const menuElement = this.modal().nativeElement;
                 if (menuElement.classList.contains('modal-header-active')) {
                         menuElement.classList.remove('modal-header-active');
                 } else {
