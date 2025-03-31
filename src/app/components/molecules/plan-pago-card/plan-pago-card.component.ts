@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { PlanPago } from '../../../interface/PlanPago';
+import { PlanPago } from '../../../interfaces/PlanPago';
 import { ButtonComponent } from '../../atoms/button.component';
 import { CommonModule } from '@angular/common';
 

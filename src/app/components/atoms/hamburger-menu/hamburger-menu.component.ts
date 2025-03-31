@@ -1,4 +1,10 @@
-import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
+import {
+        Component,
+        ElementRef,
+        EventEmitter,
+        Output,
+        ViewChild
+} from '@angular/core';
 
 @Component({
         selector: 'hamburger-menu',

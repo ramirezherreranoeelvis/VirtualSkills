@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { LearningPathCardComponent } from '../../molecules/learning-path-card/learning-path-card.component';
-import { Path } from '../../../interface/path';
+import { Path } from '../../../interfaces/path';
 import { TitleDescriptionComponent } from '../../molecules/title-description/title-description.component';
 import { CommonModule } from '@angular/common';
 

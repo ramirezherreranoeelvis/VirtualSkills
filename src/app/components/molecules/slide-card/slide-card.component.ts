@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Slide } from '../../../interface/slide';
+import { Slide } from '../../../interfaces/slide';
 import { ButtonComponent } from '../../atoms/button.component';
 
 @Component({

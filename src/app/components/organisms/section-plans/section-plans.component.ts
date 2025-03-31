@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { PlanPagoCardComponent } from '../../molecules/plan-pago-card/plan-pago-card.component';
-import { PlanPago } from '../../../interface/PlanPago';
+import { PlanPago } from '../../../interfaces/PlanPago';
 import { TitleDescriptionComponent } from '../../molecules/title-description/title-description.component';
 import { CommonModule } from '@angular/common';
 

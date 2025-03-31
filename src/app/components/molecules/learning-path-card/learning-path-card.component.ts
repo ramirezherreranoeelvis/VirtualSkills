@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Path } from '../../../interface/path';
+import { Path } from '../../../interfaces/path';
 import { ButtonComponent } from '../../atoms/button.component';
 
 @Component({

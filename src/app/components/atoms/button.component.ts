@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
                 [type]="type"
                 [disabled]="disabled"
                 (click)="this.onClick.emit()"
-                [class]="outline + ' ' + background"
+                [class]="outline + ' ' + background + (disabled?' disable':'')"
         >
                 @if (img) {
                         <img [src]=" img" [alt]="text" [class]="classImage" />
@@ -22,11 +22,15 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
                         @apply flex items-center justify-center gap-2;
                         @apply outline outline-offset-0 border-none outline-1;
                 }
+                .disable{
+                        @apply opacity-50 cursor-not-allowed;
+                        @apply outline-none;
+                }
         `]
 })
 export class ButtonComponent {
         @Input() text: string = "button";
-        @Input() type:string = "button";
+        @Input() type: string = "button";
         @Input() disabled: boolean = false;
         @Input() background: string = "bg-transparent";
         @Input() outline: string = "outline-transparent";

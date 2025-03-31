@@ -7,8 +7,7 @@
 
         &::after {
                 content: '';
-                @apply absolute top-0 left-0 h-full w-full base-image;
-                z-index: -1;
+                @apply absolute top-0 left-0 h-full w-full base-image -z-[1];
                 pointer-events: none;
                 background-image: url("/background.webp");
         }

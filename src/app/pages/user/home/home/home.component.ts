@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { SliderComponent } from '../../../../components/organisms/slider/slider.component';
-import { Slide } from '../../../../interface/slide';
+import { Slide } from '../../../../interfaces/slide';
 import { SectionPlansComponent } from '../../../../components/organisms/section-plans/section-plans.component';
 import { LineBorderComponent } from '../../../../components/atoms/line-border/line-border.component';
 import { assets } from '../../../../routes/routes-asstes';

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Course } from '../../../interface/course';
+import { Course } from '../../../interfaces/course';
 import { CourseCardComponent } from '../../molecules/course-card/course-card.component';
 import { TitleDescriptionComponent } from '../../molecules/title-description/title-description.component';
 import { CommonModule } from '@angular/common';

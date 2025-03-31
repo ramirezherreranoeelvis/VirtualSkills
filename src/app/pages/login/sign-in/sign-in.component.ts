@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonComponent } from '../../../components/atoms/button.component';
 import { InputFieldComponent } from '../../../components/atoms/input-field.component';
+import { RouterLink } from '@angular/router';
 @Component({
         selector: 'app-sign-in',
         standalone: true,
@@ -10,7 +11,8 @@ import { InputFieldComponent } from '../../../components/atoms/input-field.compo
                 CommonModule,
                 ReactiveFormsModule,
                 ButtonComponent,
-                InputFieldComponent
+                InputFieldComponent,
+                RouterLink
         ],
         templateUrl: './sign-in.component.html',
         styleUrls: ['./sign-in.component.scss']

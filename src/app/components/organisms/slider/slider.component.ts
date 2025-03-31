@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
-import { Slide } from '../../../interface/slide';
+import { Slide } from '../../../interfaces/slide';
 import { CommonModule } from '@angular/common';
 import { SlideCardComponent } from '../../molecules/slide-card/slide-card.component';
 
