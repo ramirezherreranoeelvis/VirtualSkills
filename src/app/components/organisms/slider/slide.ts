@@ -1,4 +1,4 @@
-export interface Slide {
+export interface SlideData {
         title: string;
         description: string;
         image: string;

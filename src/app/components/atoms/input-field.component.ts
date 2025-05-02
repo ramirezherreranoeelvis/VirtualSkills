@@ -16,7 +16,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
                         [ngClass]="{
                                 ' incorrect' : touched && !valid(),
                                 ' correct': touched && valid(),
-                }"
+                        }"
                         (click)="touched = true"
                   />
             </div>

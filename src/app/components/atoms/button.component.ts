@@ -21,8 +21,7 @@ import { Component, input, output } from '@angular/core';
                   {{ text() }}
             </button>
       `,
-      styles: [
-            `
+      styles: `
                   button {
                         @apply w-full h-full cursor-pointer transition-all duration-300 ease-in-out rounded-md;
                         @apply flex items-center justify-center gap-2;
@@ -33,7 +32,6 @@ import { Component, input, output } from '@angular/core';
                         @apply outline-none;
                   }
             `,
-      ],
 })
 export class ButtonComponent {
       public text = input<string>('button');

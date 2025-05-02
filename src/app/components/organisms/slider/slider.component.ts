@@ -1,5 +1,5 @@
-import { Component, input, Input, OnDestroy, OnInit } from '@angular/core';
-import { Slide } from '../../../interfaces/slide';
+import { Component, input, OnInit, signal } from '@angular/core';
+import { SlideData } from './slide';
 import { CommonModule } from '@angular/common';
 import { SlideCardComponent } from '../../molecules/slide-card/slide-card.component';
 
@@ -9,218 +9,183 @@ import { SlideCardComponent } from '../../molecules/slide-card/slide-card.compon
       templateUrl: './slider.component.html',
       styleUrl: './slider.component.scss',
 })
-export class SliderComponent implements OnInit, OnDestroy {
-      private intervalId: any;
+export class SliderComponent implements OnInit {
+      dataSlides = input.required<SlideData[]>();
 
-      dataSalides = input.required<Slide[]>();
+      protected slides = signal<Slide[]>([]);
 
-      dataSlideSelect!: dataSlide;
+      protected slideSelect!: Slide;
 
-      buttonsSlide: btnSlide[] = [];
+      protected buttonsSlide: btnSlide[] = [];
+
+      protected positionActually: number = 0;
+
+      protected maxPosition: number = 0;
+
+      protected listSlides?: DoublyLinkedListSlide;
 
       ngOnInit(): void {
+            this.initSlides();
             this.initButtons();
-            if (this.dataSalides().length < 6) {
-                  let posItemAdd = 0;
-                  let lenghtMaxDouble = this.dataSalides().length * 2;
-                  for (
-                        let i = this.dataSalides().length;
-                        i < lenghtMaxDouble;
-                        i++
-                  ) {
-                        if (posItemAdd == this.dataSalides().length) {
-                              posItemAdd = 0;
-                        }
-                        this.dataSalides().push({
-                              title: this.dataSalides()[posItemAdd].title,
-                              description:
-                                    this.dataSalides()[posItemAdd].description,
-                              image: this.dataSalides()[posItemAdd].image,
-                              clase: this.dataSalides()[posItemAdd].clase,
-                              background:
-                                    this.dataSalides()[posItemAdd].background,
-                        } as Slide);
-                        this.dataSalides()[posItemAdd++].clase = 'none';
+      }
+
+      private initSlides() {
+            let id = 0;
+            this.slides.set(
+                  this.dataSlides().map((slide) => {
+                        return {
+                              id: id++,
+                              slide: {
+                                    title: slide.title,
+                                    description: slide.description,
+                                    image: slide.image,
+                                    clase: slide.clase,
+                                    background: slide.background,
+                              },
+                        };
+                  })
+            );
+            this.slideSelect = this.slides()[0];
+            this.slideSelect.slide.clase = 'active';
+            // console.log('slides: ', this.slides());
+
+            this.dataSlides().forEach((slide, index) => {
+                  if (index === 0) {
+                        this.listSlides = new DoublyLinkedListSlide({
+                              title: slide.title,
+                              description: slide.description,
+                              image: slide.image,
+                              clase: slide.clase,
+                              background: slide.background,
+                        });
+                        return;
                   }
-            }
-            const init = this.beforePosition(0, this.dataSalides().length);
-            const end = this.nextPosition(0, this.dataSalides().length);
-            const init2 = this.beforePosition(init, this.dataSalides().length);
-            const end2 = this.nextPosition(end, this.dataSalides().length);
-            this.dataSlideSelect = {
-                  indexInit2: init2,
-                  indexInit: init,
-                  indexView: 0,
-                  indexEnd: end,
-                  indexEnd2: end2,
-            };
-            this.selectDataSlides();
+                  this.listSlides?.add({
+                        title: slide.title,
+                        description: slide.description,
+                        image: slide.image,
+                        clase: slide.clase,
+                        background: slide.background,
+                  });
+            });
+            this.listSlides?.print();
       }
 
-      ngOnDestroy(): void {
-            clearInterval(this.intervalId);
-      }
-
-      initButtons() {
-            this.buttonsSlide = this.dataSalides().map((d, index) => {
-                  console.log(index);
-                  return { clase: d.clase, index };
+      private initButtons() {
+            this.buttonsSlide = this.slides().map((slide) => {
+                  return { clase: slide.slide.clase, id: slide.id };
             });
             this.buttonsSlide[0].clase = 'active';
       }
 
-      startAutoCall(): void {
-            // this.intervalId = setInterval(() => this.moveSlide(1), 2000);
-      }
-
-      selectDataSlides() {
-            const init2 = this.dataSlideSelect.indexInit2;
-            const init = this.dataSlideSelect.indexInit;
-            const view = this.dataSlideSelect.indexView;
-            const end = this.dataSlideSelect.indexEnd;
-            const end2 = this.dataSlideSelect.indexEnd2;
-
-            for (let index = 0; index < this.dataSalides().length - 1; index++) {
-                  this.dataSalides()[index].clase = 'none';
+      private startAutoCall() {
+            if (typeof window !== 'undefined') {
+                  window.setInterval(() => this.evtClickBtnMoveSlide(1), 2000);
             }
-
-            this.dataSalides()[init2].clase = 'prev2';
-            this.dataSalides()[init].clase = 'prev';
-            this.dataSalides()[view].clase = 'active';
-            this.dataSalides()[end].clase = 'next';
-            this.dataSalides()[end2].clase = 'next2';
       }
 
-      moveSlide(direction: number) {
-            if (direction === 1) {
-                  this.dataSlideSelect.indexInit2 = this.nextPosition(
-                        this.dataSlideSelect.indexInit2,
-                        this.dataSalides().length
-                  );
-                  this.dataSlideSelect.indexInit = this.nextPosition(
-                        this.dataSlideSelect.indexInit,
-                        this.dataSalides().length
-                  );
-                  this.dataSlideSelect.indexView = this.nextPosition(
-                        this.dataSlideSelect.indexView,
-                        this.dataSalides().length
-                  );
-                  this.dataSlideSelect.indexEnd = this.nextPosition(
-                        this.dataSlideSelect.indexEnd,
-                        this.dataSalides().length
-                  );
-                  this.dataSlideSelect.indexEnd2 = this.nextPosition(
-                        this.dataSlideSelect.indexEnd2,
-                        this.dataSalides().length
-                  );
-                  let iview = 0;
-                  for (
-                        let index = 0;
-                        index < this.buttonsSlide.length;
-                        index++
-                  ) {
-                        if (this.buttonsSlide[index].clase == 'active') {
-                              iview = index;
-                        }
-                        this.buttonsSlide[index].clase = 'none';
-                  }
-                  iview++;
-                  if (iview == this.buttonsSlide.length) {
-                        iview = 0;
-                  }
-                  this.buttonsSlide[iview].clase = 'active';
+      private selectDataSlides() {}
+
+      protected evtClickBtnMoveSlide = (direction: number) => {
+            if (direction >= 0) {
+                  this.nextPosition();
             } else {
-                  this.dataSlideSelect.indexInit2 = this.beforePosition(
-                        this.dataSlideSelect.indexInit2,
-                        this.dataSalides().length
-                  );
-                  this.dataSlideSelect.indexInit = this.beforePosition(
-                        this.dataSlideSelect.indexInit,
-                        this.dataSalides().length
-                  );
-                  this.dataSlideSelect.indexView = this.beforePosition(
-                        this.dataSlideSelect.indexView,
-                        this.dataSalides().length
-                  );
-                  this.dataSlideSelect.indexEnd = this.beforePosition(
-                        this.dataSlideSelect.indexEnd,
-                        this.dataSalides().length
-                  );
-                  this.dataSlideSelect.indexEnd2 = this.beforePosition(
-                        this.dataSlideSelect.indexEnd2,
-                        this.dataSalides().length
-                  );
-                  let iview = 0;
-                  for (
-                        let index = 0;
-                        index < this.buttonsSlide.length;
-                        index++
-                  ) {
-                        if (this.buttonsSlide[index].clase == 'active') {
-                              iview = index;
-                        }
-                        this.buttonsSlide[index].clase = 'none';
-                  }
-                  iview--;
-                  if (iview == -1) {
-                        iview = this.buttonsSlide.length - 1;
-                  }
-                  this.buttonsSlide[iview].clase = 'active';
+                  this.beforePosition();
             }
+      };
 
-            this.selectDataSlides();
+      private nextPosition() {
+            const prevSelect = this.slideSelect;
+            prevSelect.slide.clase = 'prev';
+            const idSlide = this.slideSelect.id;
+            console.log('idSlide actual: ' + idSlide);
+            this.slideSelect =
+                  this.slides().find((slide) => slide.id === idSlide + 1) ||
+                  (() => {
+                        this.slides().push({
+                              id:
+                                    this.slides()[this.slides().length - 1].id +
+                                    1,
+                              slide: {
+                                    title: this.dataSlides()[0].title,
+                                    description:
+                                          this.dataSlides()[0].description,
+                                    image: this.dataSlides()[0].image,
+                                    clase: this.dataSlides()[0].clase,
+                                    background: this.dataSlides()[0].background,
+                              },
+                        });
+                        return this.slides()[this.slides().length - 1];
+                  })();
+            this.slideSelect.slide.clase = 'active';
+            
       }
 
-      nextPosition(positionActually: number, maxPosition: number) {
-            if (positionActually + 1 == maxPosition) {
-                  return 0;
-            } else {
-                  return positionActually + 1;
-            }
-      }
+      private beforePosition() {}
 
-      beforePosition(positionActually: number, maxPosition: number) {
-            if (positionActually - 1 == -1) {
-                  return maxPosition - 1;
-            } else {
-                  return positionActually - 1;
-            }
-      }
-
-      clickBtnSlideSpecific(indexBtn: number) {
-            let indexView = this.dataSlideSelect.indexView;
-            if (indexView >= this.buttonsSlide.length) {
-                  indexView = indexView - this.buttonsSlide.length;
-            }
-            if (indexBtn == indexView) {
-                  return;
-            }
-            if (indexBtn == 0 && indexView == this.buttonsSlide.length - 1) {
-                  this.moveSlide(1);
-                  return;
-            }
-
-            if (indexBtn == this.buttonsSlide.length - 1 && indexView == 0) {
-                  this.moveSlide(-1);
-                  return;
-            }
-            let mover = indexBtn - indexView;
-
-            const iterable = mover > 0 ? mover : mover * -1;
-            for (let index = 0; index < iterable; index++) {
-                  this.moveSlide(mover);
-            }
-      }
+      protected evtClickBtnSlideSpecific = () => {};
 }
-interface dataSlide {
-      indexInit2: number;
-      indexInit: number;
-      indexView: number;
-      indexEnd: number;
-      indexEnd2: number;
+interface Slide {
+      id: number;
+      slide: SlideData;
 }
 
 interface btnSlide {
       clase?: string;
-      index: number;
+      id: number;
+}
+
+interface DoublyNodeSlide {
+      id: number;
+      slide: Slide;
+      next?: DoublyNodeSlide;
+      prev?: DoublyNodeSlide;
+}
+
+class DoublyLinkedListSlide {
+      base!: DoublyNodeSlide;
+      id: number = 0;
+      constructor(slide: SlideData) {
+            this.add(slide);
+      }
+
+      add(newSlide: SlideData) {
+            const newNode: DoublyNodeSlide = {
+                  id: this.id++,
+                  slide: { id: this.id, slide: newSlide },
+            };
+            if (!this.base) {
+                  newNode.prev = newNode;
+                  newNode.next = newNode;
+                  this.base = newNode;
+            } else {
+                  const lastSlide = this.base.prev;
+                  newNode.prev = lastSlide;
+                  newNode.next = this.base;
+                  this.base.prev = newNode;
+                  lastSlide!.next = newNode;
+            }
+      }
+
+      remove(idSlideRemove: number) {
+            if (!this.base) return;
+      }
+
+      forEach(callbackfn: (slide: DoublyNodeSlide) => void) {
+            let current: DoublyNodeSlide | null = this.base;
+            while (current) {
+                  callbackfn(current);
+                  current = current.next ?? null;
+                  if (current === this.base) break;
+            }
+      }
+
+      print() {
+            console.log('[\n');
+
+            this.forEach((slide) => {
+                  console.log(slide.slide);
+            });
+            console.log(']');
+      }
 }

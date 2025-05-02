@@ -1,5 +1,5 @@
 import { Component, input, Input } from '@angular/core';
-import { Slide } from '../../../interfaces/slide';
+import { SlideData } from '../../organisms/slider/slide';
 import { ButtonComponent } from '../../atoms/button.component';
 
 @Component({
@@ -9,5 +9,5 @@ import { ButtonComponent } from '../../atoms/button.component';
       styleUrl: './slide-card.component.scss',
 })
 export class SlideCardComponent {
-      slide = input.required<Slide>();
+      slide = input.required<SlideData>();
 }
