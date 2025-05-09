@@ -1,16 +1,23 @@
 <section class="carousel">
-        <div class="container">
-                @for (slide of slides(); track $index) {
-                        <slide-card [slide]="slide.slide" />
-                }
-        </div>
-        <div class="options">
-                @for (buttonSlide of buttonsSlide; track $index) {
-                <button class="btn-select-slide" [class]="buttonSlide.clase"
-                        (click)="evtClickBtnSlideSpecific()"></button>
-                }
-        </div>
-        <!-- Controles -->
-        <button class="btn-control btn-prev" (click)="evtClickBtnMoveSlide(-1)">&#10094;</button>
-        <button class="btn-control btn-next" (click)="evtClickBtnMoveSlide(1)">&#10095;</button>
+      <div class="container">
+            @for (slide of listSlides.toArrayDataSlide(); track $index) {
+            <slide-card [slide]="slide" />
+            }
+      </div>
+      <div class="options">
+            @for (buttonSlide of buttonsSlide; track $index) {
+            <button
+                  class="btn-select-slide"
+                  [class]="buttonSlide.clase"
+                  (click)="evtClickBtnSlideSpecific(buttonSlide.id)"
+            ></button>
+            }
+      </div>
+      <!-- Controles -->
+      <button class="btn-control btn-prev" (click)="evtClickBtnMoveSlide(-1)">
+            &#10094;
+      </button>
+      <button class="btn-control btn-next" (click)="evtClickBtnMoveSlide(1)">
+            &#10095;
+      </button>
 </section>

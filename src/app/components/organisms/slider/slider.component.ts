@@ -12,17 +12,9 @@ import { SlideCardComponent } from '../../molecules/slide-card/slide-card.compon
 export class SliderComponent implements OnInit {
       dataSlides = input.required<SlideData[]>();
 
-      protected slides = signal<Slide[]>([]);
-
-      protected slideSelect!: Slide;
-
       protected buttonsSlide: btnSlide[] = [];
 
-      protected positionActually: number = 0;
-
-      protected maxPosition: number = 0;
-
-      protected listSlides?: DoublyLinkedListSlide;
+      protected listSlides: DoublyLinkedListSlide = {} as DoublyLinkedListSlide;
 
       ngOnInit(): void {
             this.initSlides();
@@ -30,25 +22,6 @@ export class SliderComponent implements OnInit {
       }
 
       private initSlides() {
-            let id = 0;
-            this.slides.set(
-                  this.dataSlides().map((slide) => {
-                        return {
-                              id: id++,
-                              slide: {
-                                    title: slide.title,
-                                    description: slide.description,
-                                    image: slide.image,
-                                    clase: slide.clase,
-                                    background: slide.background,
-                              },
-                        };
-                  })
-            );
-            this.slideSelect = this.slides()[0];
-            this.slideSelect.slide.clase = 'active';
-            // console.log('slides: ', this.slides());
-
             this.dataSlides().forEach((slide, index) => {
                   if (index === 0) {
                         this.listSlides = new DoublyLinkedListSlide({
@@ -60,7 +33,7 @@ export class SliderComponent implements OnInit {
                         });
                         return;
                   }
-                  this.listSlides?.add({
+                  this.listSlides.push({
                         title: slide.title,
                         description: slide.description,
                         image: slide.image,
@@ -68,13 +41,14 @@ export class SliderComponent implements OnInit {
                         background: slide.background,
                   });
             });
-            this.listSlides?.print();
       }
 
       private initButtons() {
-            this.buttonsSlide = this.slides().map((slide) => {
-                  return { clase: slide.slide.clase, id: slide.id };
-            });
+            this.buttonsSlide = this.listSlides
+                  .toArrayDataSlide()
+                  .map((d, index) => {
+                        return { clase: d.clase, id: index };
+                  });
             this.buttonsSlide[0].clase = 'active';
       }
 
@@ -84,93 +58,121 @@ export class SliderComponent implements OnInit {
             }
       }
 
-      private selectDataSlides() {}
-
       protected evtClickBtnMoveSlide = (direction: number) => {
             if (direction >= 0) {
-                  this.nextPosition();
+                  this.listSlides.nextView();
             } else {
-                  this.beforePosition();
+                  this.listSlides.prevView();
             }
       };
 
-      private nextPosition() {
-            const prevSelect = this.slideSelect;
-            prevSelect.slide.clase = 'prev';
-            const idSlide = this.slideSelect.id;
-            console.log('idSlide actual: ' + idSlide);
-            this.slideSelect =
-                  this.slides().find((slide) => slide.id === idSlide + 1) ||
-                  (() => {
-                        this.slides().push({
-                              id:
-                                    this.slides()[this.slides().length - 1].id +
-                                    1,
-                              slide: {
-                                    title: this.dataSlides()[0].title,
-                                    description:
-                                          this.dataSlides()[0].description,
-                                    image: this.dataSlides()[0].image,
-                                    clase: this.dataSlides()[0].clase,
-                                    background: this.dataSlides()[0].background,
-                              },
-                        });
-                        return this.slides()[this.slides().length - 1];
-                  })();
-            this.slideSelect.slide.clase = 'active';
-            
-      }
+      protected evtClickBtnSlideSpecific = (targetIndex: number) => {
+            const currentIndex = this.listSlides.viewSlide.index;
+            const totalSlides = this.listSlides.length;
 
-      private beforePosition() {}
+            // Calcula la distancia en ambas direcciones
+            const forwardDistance =
+                  (targetIndex - currentIndex + totalSlides) % totalSlides;
+            const backwardDistance =
+                  (currentIndex - targetIndex + totalSlides) % totalSlides;
 
-      protected evtClickBtnSlideSpecific = () => {};
-}
-interface Slide {
-      id: number;
-      slide: SlideData;
-}
+            // Decide si es más eficiente ir hacia adelante o hacia atrás
+            if (forwardDistance <= backwardDistance) {
+                  // Avanza (nextView) las veces necesarias
+                  for (let i = 0; i < forwardDistance; i++) {
+                        this.evtClickBtnMoveSlide(1); // +1 = nextView
+                  }
+            } else {
+                  // Retrocede (prevView) las veces necesarias
+                  for (let i = 0; i < backwardDistance; i++) {
+                        this.evtClickBtnMoveSlide(-1); // -1 = prevView
+                  }
+            }
 
-interface btnSlide {
-      clase?: string;
-      id: number;
+            this.buttonsSlide.forEach((btn) => {
+                  if (btn.id === targetIndex) {
+                        btn.clase = 'active';
+                        return;
+                  }
+                  btn.clase = '';
+            });
+      };
 }
 
 interface DoublyNodeSlide {
-      id: number;
-      slide: Slide;
-      next?: DoublyNodeSlide;
-      prev?: DoublyNodeSlide;
+      index: number;
+      slide: SlideData;
+      next: DoublyNodeSlide;
+      prev: DoublyNodeSlide;
 }
 
 class DoublyLinkedListSlide {
-      base!: DoublyNodeSlide;
-      id: number = 0;
+      base: DoublyNodeSlide;
+      index: number = 0;
+      lastSlide: DoublyNodeSlide;
+      viewSlide: DoublyNodeSlide;
+      length: number = 0;
+
       constructor(slide: SlideData) {
-            this.add(slide);
-      }
-
-      add(newSlide: SlideData) {
             const newNode: DoublyNodeSlide = {
-                  id: this.id++,
-                  slide: { id: this.id, slide: newSlide },
-            };
-            if (!this.base) {
-                  newNode.prev = newNode;
-                  newNode.next = newNode;
-                  this.base = newNode;
-            } else {
-                  const lastSlide = this.base.prev;
-                  newNode.prev = lastSlide;
-                  newNode.next = this.base;
-                  this.base.prev = newNode;
-                  lastSlide!.next = newNode;
-            }
+                  index: this.index,
+                  slide: slide,
+            } as DoublyNodeSlide;
+            newNode.prev = newNode;
+            newNode.next = newNode;
+            this.base = newNode;
+            this.base.slide.clase = 'active';
+            this.lastSlide = newNode;
+            this.viewSlide = this.base;
+            this.length = 1;
+      }
+      /* view */
+      nextView() {
+            const viewSlide = this.viewSlide;
+            const viewNext = this.viewSlide.next;
+            const viewPrev = this.viewSlide.prev;
+
+            viewSlide.slide.clase = 'prev transition';
+            viewNext.slide.clase = 'active transition';
+            viewPrev.slide.clase = 'none';
+            /* el befeore que es antes del actual peude no ser el siguiente de 
+            active si haay mas por eso se escoje el next */
+            viewNext.next.slide.clase = 'next ';
+            this.viewSlide = this.viewSlide.next;
       }
 
-      remove(idSlideRemove: number) {
-            if (!this.base) return;
+      prevView() {
+            const viewSlide = this.viewSlide;
+            const viewNext = this.viewSlide.next;
+            const viewPrev = this.viewSlide.prev;
+
+            viewSlide.slide.clase = 'next transition';
+            viewPrev.slide.clase = 'active transition';
+            viewNext.slide.clase = 'none';
+            viewPrev.prev.slide.clase = 'prev ';
+            this.viewSlide = this.viewSlide.prev;
       }
 
+      /* data */
+      push(newSlide: SlideData) {
+            this.index = this.index + 1;
+            const newNode: DoublyNodeSlide = {
+                  index: this.index,
+                  slide: newSlide,
+            } as DoublyNodeSlide;
+
+            newNode.prev = this.lastSlide;
+            newNode.next = this.base;
+            this.base.prev = newNode;
+            this.lastSlide.next = newNode;
+            this.lastSlide = newNode;
+
+            this.viewSlide.next.slide.clase = 'next transition';
+            this.viewSlide.prev.slide.clase = 'prev transition';
+            this.length++;
+      }
+
+      /* utils */
       forEach(callbackfn: (slide: DoublyNodeSlide) => void) {
             let current: DoublyNodeSlide | null = this.base;
             while (current) {
@@ -188,4 +190,19 @@ class DoublyLinkedListSlide {
             });
             console.log(']');
       }
+
+      toArrayDataSlide(): SlideData[] {
+            const list: DoublyNodeSlide[] = [];
+            this.forEach((slide) => {
+                  list.push(slide);
+            });
+            return list.map((slide) => {
+                  return slide.slide;
+            });
+      }
+}
+
+interface btnSlide {
+      clase?: string;
+      id: number;
 }
